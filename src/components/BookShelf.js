@@ -58,8 +58,8 @@ class BookShelf extends React.Component {
               <ol className="books-grid">
                 {/* loop through and pass state as prop */}
                 {this.state.books.map(book => (
-                  <Book key={book.id} book={book} />
-                ))}
+                  <Book key={book.id} data={book} />
+                ))};
               </ol>
             </div>
           </div>
@@ -67,7 +67,7 @@ class BookShelf extends React.Component {
             <h2 className="bookshelf-title">Want to Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-                <Book />
+
               </ol>
             </div>
           </div>
@@ -75,7 +75,7 @@ class BookShelf extends React.Component {
             <h2 className="bookshelf-title">Read</h2>
             <div className="bookshelf-books">
               <ol className="books-grid">
-                <Book />
+
               </ol>
             </div>
           </div>

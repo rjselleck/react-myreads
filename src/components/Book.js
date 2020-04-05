@@ -6,7 +6,7 @@ import React from 'react'
 class Book extends React.Component {
   render() {
 
-    const { title, author, image } = this.props.book;
+    const { title, author, image } = this.props.data;
 
     return (
       <div>
