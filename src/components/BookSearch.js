@@ -1,6 +1,6 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as BooksAPI from '../BooksAPI'
 import SearchInput from './SearchInput'
 // import SearchResults from './SearchResults'
@@ -57,7 +57,7 @@ class BookSearch extends React.Component {
             />
           </div>
           <SearchResults
-            key={books.id}
+            // key={books.id}
             books={books}
             updateBookStatus={updateBookStatus}
             searchError={searchError}
@@ -69,5 +69,9 @@ class BookSearch extends React.Component {
   }
 }
 
+BookSearch.propTypes = {
+  books: PropTypes.array.isRequired,
+  updateBookStatus: PropTypes.func.isRequired
+};
 
 export default BookSearch

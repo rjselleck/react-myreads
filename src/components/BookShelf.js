@@ -1,12 +1,10 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Book from './Book'
-
 
 
 const BookShelf = props => {
   const { books, updateBookStatus } = props;
-
 
   return (
     <div className="list-books-content">
@@ -15,7 +13,6 @@ const BookShelf = props => {
           <h2 className="bookshelf-title">Currently Reading</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'currentlyReading').map(filteredBook => (
                 <Book
                   key={filteredBook.id}
@@ -23,7 +20,7 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))}
+              ))};
             </ol>
           </div>
         </div>
@@ -31,7 +28,6 @@ const BookShelf = props => {
           <h2 className="bookshelf-title">Want to Read</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'wantToRead').map(filteredBook => (
                 <Book
                   key={filteredBook.id}
@@ -39,7 +35,7 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))}
+              ))};
             </ol>
           </div>
         </div>
@@ -47,7 +43,6 @@ const BookShelf = props => {
           <h2 className="bookshelf-title">Read</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'read').map(filteredBook => (
                 <Book
                   key={filteredBook.id}
@@ -55,7 +50,7 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))}
+              ))};
             </ol>
           </div>
         </div>
@@ -64,5 +59,9 @@ const BookShelf = props => {
   )
 }
 
+BookShelf.propTypes = {
+  books: PropTypes.array.isRequired,
+  updateBookStatus: PropTypes.func.isRequired
+};
 
 export default BookShelf

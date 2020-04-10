@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Book from './Book'
-// import PropTypes from 'prop-types'
+
 
 
 const SearchResults = props => {
@@ -14,6 +15,7 @@ const SearchResults = props => {
         <ol className="books-grid">
           {searchResults.map(book => (
             <Book
+              key={book.id}
               book={book}
               books={books}
               updateBookStatus={updateBookStatus}
@@ -24,5 +26,12 @@ const SearchResults = props => {
     </div>
   )
 }
+
+SearchResults.propTypes = {
+  books: PropTypes.array.isRequired,
+  searchError: PropTypes.bool.isRequired,
+  searchResults: PropTypes.array.isRequired,
+  updateBookStatus: PropTypes.func.isRequired
+};
 
 export default SearchResults

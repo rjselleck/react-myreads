@@ -16,7 +16,7 @@ class BooksApp extends React.Component {
   componentDidMount() {
     //get data from API and put in state
     BooksAPI.getAll().then(books => this.setState({ books }))
-  }
+  };
 
 
   updateBookStatus = (updatedBook, status) => {
@@ -25,9 +25,9 @@ class BooksApp extends React.Component {
       updatedBook.shelf = status;
       this.setState(prevState => ({
         books: prevState.books.filter(b => b.id !== updatedBook.id).concat(updatedBook)
-      }))
-    })
-  }
+      }));
+    });
+  };
 
 
   render() {
