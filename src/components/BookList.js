@@ -21,7 +21,6 @@ const BookList = props => {
         </div>
       </div>
     </div>
-
   )
 };
 
@@ -29,6 +28,5 @@ BookList.propTypes = {
   books: PropTypes.array.isRequired,
   updateBookStatus: PropTypes.func.isRequired
 };
-
 
 export default BookList

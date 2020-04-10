@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 
 const SearchInput = props => {
@@ -17,5 +17,9 @@ const SearchInput = props => {
     </div>
   )
 }
+
+SearchInput.propTypes = {
+  searchBooks: PropTypes.func.isRequired
+};
 
 export default SearchInput

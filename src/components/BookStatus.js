@@ -10,15 +10,14 @@ class BookStatus extends React.Component {
   render() {
 
     const { book, books } = this.props;
-    let b;
     let bookStatus = 'none';
+    let b;
 
-    //if book in current list set shelf to status
     for (b of books) {
       if (b.id === book.id) {
         bookStatus = b.shelf;
       }
-    }
+    };
 
     return (
       <div className="book-shelf-changer">
