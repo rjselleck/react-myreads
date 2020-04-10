@@ -5,15 +5,23 @@ import missing from '../images/missing.jpg'
 
 const Book = props => {
 
-  const { book, updateBookStatus } = props;
+  const { book, books, updateBookStatus } = props;
 
-  /* 
-  * TODO: Make sure these two defaults work 
-  */
+  const title = book.title;
+
+  let authorList;
+  if (book.authors) {
+    authorList = book.authors.map((author, index) => (
+      <div key={index} className="book-authors">{author}</div>
+    ));
+  } else {
+    authorList = <div key="0" className="book-authors">Author Unkown</div>
+  }
+
   const bookImage = book.imageLinks && book.imageLinks.thumbnail
     ? book.imageLinks.thumbnail
     : missing;
-  const title = book.title ? book.title : 'No title available';
+
 
   return (
     <div>
@@ -22,13 +30,14 @@ const Book = props => {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${bookImage})` }}>
             </div>
-            <BookStatus book={book} updateBookStatus={updateBookStatus} />
+            <BookStatus
+              book={book}
+              books={books}
+              updateBookStatus={updateBookStatus}
+            />
           </div>
           <div className="book-title">{title}</div>
-          {book.authors && book.authors.map((author, index) => (
-            <div key={index} className="book-authors">{author}</div>
-          ))}
-
+          {authorList}
         </div>
       </li>
     </div>

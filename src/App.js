@@ -18,55 +18,39 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(books => this.setState({ books }))
   }
 
-  updateBookStatus = (book, shelf) => {
+
+  updateBookStatus = (updatedBook, status) => {
     // update book data
-    BooksAPI.update(book, shelf).then(response => {
-      book.shelf = shelf;
-    })
-
-    // update book status in state array
-    const updatedBooks = this.state.books.map(b => {
-      if (b.id === book.id) {
-        b.shelf = shelf;
-      }
-      return b;
-    })
-
-    //update state
-    this.setState({
-      books: updatedBooks,
+    BooksAPI.update(updatedBook, status).then(response => {
+      updatedBook.shelf = status;
+      this.setState(prevState => ({
+        books: prevState.books.filter(b => b.id !== updatedBook.id).concat(updatedBook)
+      }))
     })
   }
-
-  /* this won't automatically refresh screen
-  updateBookStatus = (updatedBook, shelf) => {
-    // update book data
-    BooksAPI.update(updatedBook, shelf).then(response => {
-      updatedBook.shelf = shelf;
-    })
-
-    this.setState(prevState => ({
-      books: prevState.books.filter(b => b.id !== updatedBook.id).concat(updatedBook)
-    }))
-  }
-  */
 
 
   render() {
 
     return (
       //routes to home and search pages
-      <div className="app">
+      <div className="app" >
         <Route
           exact path="/"
           render={() => (
-            <BookList books={this.state.books} updateBookStatus={this.updateBookStatus} />
+            <BookList
+              books={this.state.books}
+              updateBookStatus={this.updateBookStatus}
+            />
           )}
         />
         <Route
           exact path="/search"
           render={() => (
-            <BookSearch books={this.state.books} updateBookStatus={this.updateBookStatus} />
+            <BookSearch
+              books={this.state.books}
+              updateBookStatus={this.updateBookStatus}
+            />
           )}
         />
       </div>

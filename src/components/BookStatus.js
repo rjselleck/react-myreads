@@ -9,11 +9,20 @@ class BookStatus extends React.Component {
 
   render() {
 
-    const { book } = this.props;
+    const { book, books } = this.props;
+    let b;
+    let bookStatus = 'none';
+
+    //if book in current list set shelf to status
+    for (b of books) {
+      if (b.id === book.id) {
+        bookStatus = b.shelf;
+      }
+    }
 
     return (
       <div className="book-shelf-changer">
-        <select defaultValue={book.shelf} onChange={this.handleChangeStatus}>
+        <select defaultValue={bookStatus} onChange={this.handleChangeStatus}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
           <option value="wantToRead">Want to Read</option>

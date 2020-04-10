@@ -4,46 +4,43 @@ import { Link } from 'react-router-dom'
 import * as BooksAPI from '../BooksAPI'
 import SearchInput from './SearchInput'
 // import SearchResults from './SearchResults'
-import Book from './Book'
+
+import SearchResults from './SearchResults'
 
 
 class BookSearch extends React.Component {
 
   state = {
     searchQuery: '',
-    searchResults: []
-  };
-
+    searchResults: [],
+    searchError: false
+  }
 
 
   searchBooks = event => {
 
-    //set state
-    this.setState({ searchQuery: event });
+    const query = event;
 
-    const query = this.state.searchQuery;
+    this.setState({ searchQuery: query });
 
     //search data for matches
     if (query) {
-      //query not empty
       BooksAPI.search(query, 20).then((books) => {
-        this.setState({ searchResults: books })
-        console.log(books);
+        books.length > 0
+          ? this.setState({ searchResults: books, searchError: false })
+          : this.setState({ searchResults: [], searchError: true })
       });
     } else {
-      // query is empty
-      console.log("query empty");
-      // this.setState({ searchQuery: '' })
-      // this.setState({ searchResults: [] })
+      //empty query - reset state to default
+      this.setState({ searchResults: [], searchError: false })
     }
-
   }
 
 
   render() {
 
-    const { searchQuery, searchResults } = this.state;
-    const { updateBookStatus } = this.props;
+    const { searchQuery, searchResults, searchError } = this.state;
+    const { books, updateBookStatus } = this.props;
 
     return (
 
@@ -54,24 +51,18 @@ class BookSearch extends React.Component {
             <Link to="/">
               <button className="close-search">Close</button>
             </Link>
-            <SearchInput searchBooks={this.searchBooks} />
+            <SearchInput
+              searchBooks={this.searchBooks}
+              searchQuery={searchQuery}
+            />
           </div>
-          <div>
-
-          </div>
-          <div className="search-books-results">
-            {/* git rid of this */}
-            <p>{searchQuery}</p>
-
-            <div>
-              <ol className="books-grid">
-                {searchResults.map(book => (
-                  <Book key={book.id} book={book} updateBookStatus={updateBookStatus} />
-                ))}
-              </ol>
-            </div>
-
-          </div>
+          <SearchResults
+            key={books.id}
+            books={books}
+            updateBookStatus={updateBookStatus}
+            searchError={searchError}
+            searchResults={searchResults}
+          />
         </div>
       </div>
     )
