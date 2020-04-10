@@ -5,7 +5,7 @@ import Book from './Book'
 
 
 const BookShelf = props => {
-  const { books } = props;
+  const { books, updateBookStatus } = props;
 
 
   return (
@@ -17,7 +17,7 @@ const BookShelf = props => {
             <ol className="books-grid">
               {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'currentlyReading').map(filteredBook => (
-                <Book key={filteredBook.id} book={filteredBook} />
+                <Book key={filteredBook.id} book={filteredBook} updateBookStatus={updateBookStatus} />
               ))}
             </ol>
           </div>
@@ -28,7 +28,7 @@ const BookShelf = props => {
             <ol className="books-grid">
               {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'wantToRead').map(filteredBook => (
-                <Book key={filteredBook.id} book={filteredBook} />
+                <Book key={filteredBook.id} book={filteredBook} updateBookStatus={updateBookStatus} />
               ))}
             </ol>
           </div>
@@ -39,7 +39,7 @@ const BookShelf = props => {
             <ol className="books-grid">
               {/* loop through and pass state as prop */}
               {books.filter(books => books.shelf === 'read').map(filteredBook => (
-                <Book key={filteredBook.id} book={filteredBook} />
+                <Book key={filteredBook.id} book={filteredBook} updateBookStatus={updateBookStatus} />
               ))}
             </ol>
           </div>

@@ -1,11 +1,11 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import BookStatus from './BookStatus'
-import missing from '../images/missing.jpg';
+import missing from '../images/missing.jpg'
 
 const Book = props => {
 
-  const { book } = props;
+  const { book, updateBookStatus } = props;
 
   /* 
   * TODO: Make sure these two defaults work 
@@ -22,7 +22,7 @@ const Book = props => {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${bookImage})` }}>
             </div>
-            <BookStatus book={book} />
+            <BookStatus book={book} updateBookStatus={updateBookStatus} />
           </div>
           <div className="book-title">{title}</div>
           {book.authors && book.authors.map((author, index) => (
