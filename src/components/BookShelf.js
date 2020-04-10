@@ -6,6 +6,7 @@ import Book from './Book'
 const BookShelf = props => {
   const { books, updateBookStatus } = props;
 
+  // surely this could be refactured...and don't call me surely
   return (
     <div className="list-books-content">
       <div>
@@ -20,7 +21,7 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))};
+              ))}
             </ol>
           </div>
         </div>
@@ -35,7 +36,7 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))};
+              ))}
             </ol>
           </div>
         </div>
@@ -50,14 +51,14 @@ const BookShelf = props => {
                   books={books}
                   updateBookStatus={updateBookStatus}
                 />
-              ))};
+              ))}
             </ol>
           </div>
         </div>
       </div>
     </div>
   )
-}
+};
 
 BookShelf.propTypes = {
   books: PropTypes.array.isRequired,

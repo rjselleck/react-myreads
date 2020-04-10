@@ -9,15 +9,12 @@ const Book = props => {
 
   const title = book.title;
 
-  let authorList;
-  if (book.authors) {
-    authorList = book.authors.map((author, index) => (
-      <div key={index} className="book-authors">{author}</div>
-    ));
-  } else {
-    authorList = <div key="0" className="book-authors">Author Unkown</div>
-  }
+  // go through authors and assign authorList
+  const authorList = book.authors
+    ? book.authors.map((author, index) => (<div key={index} className="book-authors">{author}</div>))
+    : <div key="0" className="book-authors">Author Unkown</div>;
 
+  // assign bookImage the actual image or missing image
   const bookImage = book.imageLinks && book.imageLinks.thumbnail
     ? book.imageLinks.thumbnail
     : missing;
@@ -40,7 +37,7 @@ const Book = props => {
       </div>
     </li>
   )
-}
+};
 
 Book.propTypes = {
   book: PropTypes.object.isRequired,

@@ -16,7 +16,7 @@ const SearchInput = props => {
       />
     </div>
   )
-}
+};
 
 SearchInput.propTypes = {
   searchBooks: PropTypes.func.isRequired

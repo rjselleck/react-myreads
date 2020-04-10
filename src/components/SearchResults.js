@@ -25,7 +25,7 @@ const SearchResults = props => {
       </div>
     </div>
   )
-}
+};
 
 SearchResults.propTypes = {
   books: PropTypes.array.isRequired,

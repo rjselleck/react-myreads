@@ -7,8 +7,6 @@ import BookList from './components/BookList'
 import BookSearch from './components/BookSearch'
 
 
-
-
 class BooksApp extends React.Component {
 
   state = { books: [] };

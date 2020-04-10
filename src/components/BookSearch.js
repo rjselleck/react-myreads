@@ -16,7 +16,7 @@ class BookSearch extends React.Component {
     searchError: false
   }
 
-
+  // search for books in query
   searchBooks = event => {
 
     const query = event;
@@ -34,7 +34,7 @@ class BookSearch extends React.Component {
       //empty query - reset state to default
       this.setState({ searchResults: [], searchError: false })
     }
-  }
+  };
 
   render() {
 

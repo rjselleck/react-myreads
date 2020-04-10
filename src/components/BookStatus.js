@@ -3,21 +3,23 @@ import PropTypes from 'prop-types'
 
 class BookStatus extends React.Component {
 
+  // change book status 
   handleChangeStatus = event => {
     this.props.updateBookStatus(this.props.book, event.target.value)
-  }
+  };
 
   render() {
 
     const { book, books } = this.props;
+
+    // set default status to none, then set status based on state
     let bookStatus = 'none';
     let b;
-
     for (b of books) {
       if (b.id === book.id) {
         bookStatus = b.shelf;
       }
-    };
+    }
 
     return (
       <div className="book-shelf-changer">
