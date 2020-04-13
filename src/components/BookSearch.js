@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as BooksAPI from '../BooksAPI'
 import SearchInput from './SearchInput'
-// import SearchResults from './SearchResults'
-
 import SearchResults from './SearchResults'
 
 
